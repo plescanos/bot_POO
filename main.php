@@ -17,10 +17,12 @@ $text = $message["text"];
 //ASIGNACIÓN COMANDO EN FORMATO /----
 
 if(isset($text) && $text == '/start' ){
-    $respuesta = "Hola " .$name. " bienvenido al bot que va a ayudarte a mejorar tus habilidades de programación 😄 \n\n Para iniciar tu practica por favor utiliza el comando /ejercicio1
-    \n\n Si te sientes perdido, puedes utilizar los comandos:
+    $respuesta = "Hola " .$name. " bienvenido al bot que va a ayudarte a mejorar tus habilidades de programación 😄 \n\n
+    A continuación tienes los comandos que puedes utilizar:
+    \n /ejercicio1
     \n /help
-    \n /indice";
+    \n /indice
+    \n /recursos";
 
     sendMessage($id,$respuesta,$token);
 } 
@@ -33,6 +35,19 @@ else if (isset($text) && $text == '/help' ){
 else if(isset($text) && $text == '/indice' ){
     $respuesta = "LISTA DE EJERCICIOS:\n
     /ejercicio1";
+
+    sendMessage($id,$respuesta,$token);
+}
+
+else if(isset($text) && $text == '/recursos' ){
+    $respuesta = "LISTA DE ENLACES QUE PUEDEN INTERESARTE PARA ESTUDIAR:";
+    sendMessage($id,$respuesta,$token);
+    $respuesta = "Infografías: 
+    \nhttps://teloexplicocongatitos.com/poster/tlecg07
+    \nVideos explicativos:
+    \nhttps://youtu.be/L8ywM1BQwT0
+    \nCheatsheets:
+    \nhttps://introcs.cs.princeton.edu/java/11cheatsheet/";
 
     sendMessage($id,$respuesta,$token);
 }
@@ -243,14 +258,22 @@ else if (isset($text) && $text == 'Opción 1'){
 }
 
 
+//EJERCICIO 2
+else if (isset($text) && $text == '/ejercicio2' ){
+    $sticker="CAACAgEAAxkBAAEBG5hiklWpKaycPq7ngVycKBcgcagywgAC7AADOA6CEWJyDgUYkJqXJAQ";
+    sendSticker($id,$sticker,$token);
+
+    $respuesta = "Este ejercicio todavía está en desarrollo 😅 pronto lo tendremos para ti 🤓";
+
+    sendMessage($id,$respuesta,$token);
+} 
+
 //RESPUESTA POR DEFECTO
 else if(isset($text)){
     $respuesta = "Te equivocaste, intenta de nuevo 😅. Si tienes problemas puedes usar el comando /help";
 
     sendMessage($id,$respuesta,$token);
 } 
-
-
 
 //ENVÍO Y CONEXIÓN API DE TELEGRAM
 
